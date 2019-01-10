@@ -14,7 +14,7 @@
 		header('Content-type: application/json');
 		echo '{"err":1}';//Invalid File Format, err code for onQuickImageUploaded js function, see How to use file
 		exit;
-	}
+  }
   if($img[2] === IMG_GIF){
 		if($size > 2097152){
 			unlink('tmp_file_name');
@@ -35,4 +35,4 @@
 	}
   rename('tmp_file_name', 'tmp_file_name' . $ext);
   header('Content-type: application/json');
-	echo '{"url":"tmp_file_name' . $ext . '","w":' . $img[0] . ',"h":' . $img[1] . '}';
+  echo '{"url":"tmp_file_name' . $ext . '","w":' . $img[0] . ',"h":' . $img[1] . '}';
