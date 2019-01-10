@@ -1,5 +1,5 @@
 <?php
-  //0. You can get $_POST['param'] here, see quickImageUploadGetParams js function in How to use file
+  //0. You can get $_POST['param'] here, see quickImageUploadGetParams js function in README file
   //1. save the uploaded file to a temp file:
   $tmp_file = fopen('tmp_file_name', 'w');
   $input = fopen('php://input', 'r');
@@ -12,7 +12,7 @@
   if($img === FALSE || ($img[2] != IMG_GIF && $img[2] != IMG_JPG && $img[2] != 3)){
 		unlink('tmp_file_name');
 		header('Content-type: application/json');
-		echo '{"err":1}';//Invalid File Format, err code for onQuickImageUploaded js function, see How to use file
+		echo '{"err":1}';//Invalid File Format, err code for onQuickImageUploaded js function, see README file
 		exit;
   }
   if($img[2] === IMG_GIF){
