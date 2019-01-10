@@ -13,6 +13,7 @@ CKEDITOR.appendTo('editor', {
 	},
   onQuickImageUploadStart : function(editor){
       //this function is optional, but usually it shouldn't be absent
+      //The user will see a placeholder here first and you can add some ani effect...
       var html = '<div contenteditable="false" class="the_only_uploading_img_div do_your_own_css_magic_here">do your own html/js magic here</div><p><br /></p>';
       editor.insertElement(CKEDITOR.dom.element.createFromHtml(html));
   },
