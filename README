@@ -42,7 +42,7 @@ CKEDITOR.appendTo('editor', {
 		alert(err);
 		return null;
 	}
-      $('div.the_only_uploading_img_div').html('<img src="' + d.url + '" />').removeClass('the_only_uploading_img_div');//Do your own html/js tricks here.
+      $('div.the_only_uploading_img_div').html('<img src="' + d.url + '" width="' + d.w + '" height="' + d.h + '" />').removeClass('the_only_uploading_img_div');//Do your own html/js tricks here.
       //always return null here, because you just inserted the image by yourself. Or you can return a HTML block, the plugin will resert it for you  
       return null;
   }
