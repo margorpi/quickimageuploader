@@ -4,12 +4,12 @@ CKEDITOR.appendTo('editor', {
   quickImageUploadURL : 'https://example.com/your-image-upload-url.php', //see "sample-image-upload-url.php"
   quickImageUploadGetParams : function(){
       //this function is optional. return a param list which will be POST to the quickImageUploadURL above.
-			return {"param1" : 123, "param2" : 456};
+	return {"param1" : 123, "param2" : 456};
 	},
   isQuickImageUploaderBusy : function(){
       //this function is optional. 
       //return TRUE if you want to do nothing when user clicks the upload button, eg. an image is uploading.
-			return this_is_your_own_function_ok_to_upload_image();
+	return this_is_your_own_function_ok_to_upload_image();
 	},
   onQuickImageUploadStart : function(editor){
       //this function is optional, but usually it shouldn't be absent
@@ -24,22 +24,23 @@ CKEDITOR.appendTo('editor', {
   onQuickImageUploaded : function(data){
       //this function is optional, but usually it shouldn't be absent
       var d = $.parseJSON(data);
-			if(d.url == null){
-			    var err = 'Invalid Image File';
-					switch(d.err){
-						case 1:
-						    err = 'The uploaded image format is not of acceptible format! Please upload jpeg, png or gif format';
-						break;
-						case 2:
-						    err = 'The image you uploaded in gif format cannot exceed 2M.'; //You can change this value inside plugin.js file
-						break;
-						case 3:
-                err = 'Unable to save the image you uploaded.';
-						break;
-					}
-					alert(err);
-					return null;
-			}
+	if(d.url == null){
+		var err = 'Invalid Image File';
+		//you can define your own err code in your-image-upload-url.php
+		switch(d.err){
+			case 1:
+			    err = 'The uploaded image format is not of acceptible format! Please upload jpeg, png or gif format';
+			break;
+			case 2:
+			    err = 'The image you uploaded in gif format cannot exceed 2M.'; //You can change this value in your-image-upload-url.php file
+			break;
+			case 3:
+				err = 'Unable to save the image you uploaded.';
+			break;
+		}
+		alert(err);
+		return null;
+	}
       $('div.the_only_uploading_img_div').html('<img src="' + d.url + '" />').removeClass('the_only_uploading_img_div');//Do your own html/js tricks here.
       //always return null here, because you just inserted the image by yourself. Or you can return a HTML block, the plugin will resert it for you  
       return null;
